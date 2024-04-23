@@ -1,5 +1,15 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const fs = require('fs');
+
+const logErrorToFile = (error) => {
+    const errorMessage = `${new Date().toISOString()}: ${error.stack}\n`;
+    fs.appendFileSync('error.log', errorMessage);
+};
+
+const printProgress = (message) => {
+    process.stdout.write(`${message}...\r`);
+};
 
 const crawlPage = async (url) => {
     try {
@@ -10,7 +20,7 @@ const crawlPage = async (url) => {
         const links = $('a').map((_, element) => $(element).attr('href')).get();
         return { title, text, links }
     } catch (error) {
-        console.error(`Error crawling page ${url}: `, error);
+        logErrorToFile(error);
         throw error;
     }
 };
@@ -32,11 +42,13 @@ const crawl = async (initialUrl, maxDepth) => {
             const newLinks = pageData.links.filter(link => !crawledUrls.has(link));
             newLinks.forEach(link => pagesToCrawl.push({ url: link, depth: depth + 1 }));
         } catch (error) {   
-            console.error(`Error crawling page ${url}: `, error);
+            logErrorToFile(error);
         }
+
+        printProgress(`Crawled ${crawledPages.length} pages`);
     }
 
-    return crawledPages;
+    return {crawledPages: crawledPages, crawledUrls: crawledUrls};
 };
 
 module.exports = { crawl };

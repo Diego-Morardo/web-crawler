@@ -21,9 +21,11 @@ console.log('Start crawling.');
 crawl(argv.url, argv.maxdepth)
     .then((result) => {
 
-        writeToJsonFile(result, argv.url);
+        writeToJsonFile(result.crawledPages, argv.url);
 
         console.log('Crawling completed succesfully.');
+        console.log(`Total pages crawled: ${result.crawledPages.length}`);
+        console.log(`Total unique links found: ${result.crawledUrls.size}`);
     })
     .catch((error) => {
         console.error('Error crawling pages: ', error);
