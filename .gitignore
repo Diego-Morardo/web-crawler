@@ -2,3 +2,5 @@ node_modules/
 
 results/*
 !results/.gitkeep
+
+package-lock.json
