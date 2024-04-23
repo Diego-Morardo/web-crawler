@@ -13,13 +13,19 @@ This project implements the core of a web crawler that traverses websites from a
 git clone https://github.com/Diego-Morardo/web-crawler.git
 ```
 
-2. Install project dependencies:
+2. Navigate to the project directory:
+
+   ```bash
+   cd github-repo-browser
+   ```
+
+3. Install project dependencies:
 
 ```bash
 npm install
 ```
 
-3. Run the web crawler using the command line. For example:
+4. Run the web crawler using the command line. For example:
 
 ```bash
 node index.js --url [initial URL] --maxdepth [maximum depth]
