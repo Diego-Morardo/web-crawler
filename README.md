@@ -15,9 +15,9 @@ git clone https://github.com/Diego-Morardo/web-crawler.git
 
 2. Navigate to the project directory:
 
-   ```bash
-   cd github-repo-browser
-   ```
+```bash
+cd github-repo-browser
+```
 
 3. Install project dependencies:
 
