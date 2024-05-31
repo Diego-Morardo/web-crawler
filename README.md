@@ -2,7 +2,7 @@
 
 ## Description
 
-This project implements the core of a web crawler that traverses websites from an initial URL, saves the text of these pages, and allows saving the results to a file in the filesystem.
+This project implements the core of a web crawler that traverses websites from an initial URL, saves the text of these pages, and allows saving the results to a file in the filesystem
 
 
 ## Getting Started
